@@ -73,4 +73,10 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+.idea/apache-doris-on-k8s.iml
+.idea/codeStyles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Intellij+iml
