@@ -33,8 +33,8 @@ Once the container is up, login to the UI, and create a bucket called `doris`
 
 ### Install core components
 
-1. [Install FoundationDB](docs/Install_FoundationDB_on_K8s)
-2. [Install Doris Cluster](docs/Install_Doris_Cluster_on_K8s)
+1. [Install FoundationDB](docs/Install_FoundationDB_on_K8s.md)
+2. [Install Doris Cluster](docs/Install_Doris_Cluster_on_K8s.md)
 
 ### Demo
 
