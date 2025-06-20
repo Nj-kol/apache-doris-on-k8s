@@ -84,7 +84,7 @@ insert into demo.user_data values
 After this, you should be able to see this data on S3:
 
 <p align="center">
-  <img src="docs/assets/doris_storage_s3.png" width="50%" alt="Screenshot 1">
+  <img src="docs/assets/doris_storage_s3.png" width="75%" alt="Screenshot 1">
 </p>
 
 You can also see the data now on the Doris UI based SQL Editor:
@@ -99,7 +99,7 @@ kubectl port-forward svc/doris-disaggregated-cluster-fe 8030:8030 -n doris
 - user/pass - root/NA
 
 <p align="center">
-  <img src="docs/assets/doris_ui.png" width="50%" alt="Screenshot 1">
+  <img src="docs/assets/doris_ui.png" width="75%" alt="Screenshot 1">
 </p>
 
 
