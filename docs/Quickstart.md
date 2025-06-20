@@ -1,27 +1,31 @@
-**Test**
-
-To test
+## Doris Quickstart
 
 ```sql
 create database demo;
 
 use demo; 
 
-create table mytable
-(
-    k1 TINYINT,
-    k2 DECIMAL(10, 2) DEFAULT "10.05",    
-    k3 CHAR(10) COMMENT "string column",    
-    k4 INT NOT NULL DEFAULT "1" COMMENT "int column"
-) 
-COMMENT "my first table"
-DISTRIBUTED BY HASH(k1) BUCKETS 1;
+CREATE TABLE IF NOT EXISTS demo.user_data (
+    user_id INT,
+    name STRING,
+    age INT,
+    update_time DATETIME
+)
+UNIQUE KEY(user_id)
+DISTRIBUTED BY HASH(user_id) BUCKETS 3
+PROPERTIES (
+    "replication_num" = "1",
+    "enable_unique_key_merge_on_write" = "true"
+);
 
-insert into mytable values
-(1,0.14,'a1',20),
-(2,1.04,'b2',21),
-(3,3.14,'c3',22),
-(4,4.35,'d4',23);
+insert into demo.user_data values
+(1, "Alice", 30, "2024-01-01 10:00:00"),
+(2, "Bob", 25, "2024-01-01 11:00:00");
 
-select * from mytable;
+select * from demo.user_data;
+
+-- Upsert data
+insert into demo.user_data values
+(1, "Alice", 31, "2024-01-02 12:00:00"),
+(3, "Charlie", 22, "2024-01-02 13:00:00");
 ```

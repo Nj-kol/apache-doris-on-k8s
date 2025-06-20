@@ -1,0 +1,44 @@
+apiVersion: disaggregated.cluster.doris.com/v1
+kind: DorisDisaggregatedCluster
+metadata:
+  name: doris-disaggregated-cluster
+spec:
+  metaService:
+    image: apache/doris:ms-3.0.5
+    replicas: 1
+    requests:
+      cpu: 1
+      memory: 1Gi
+    limits:
+      cpu: 1
+      memory: 1Gi
+    fdb:
+      configMapNamespaceName:
+        name: fdb-cluster-config
+        namespace: fdb
+  feSpec:
+    replicas: 1
+    image: apache/doris:fe-3.0.5
+    logNotStore: true
+    configMaps:
+    - name: fe-configmap
+    requests:
+      cpu: 2
+      memory: 4Gi
+    limits:
+      cpu: 2
+      memory: 4Gi
+  computeGroups:
+    - uniqueId: cg1
+      configMaps:
+      - name: be-configmap
+        mountPath: "/etc/doris"
+      logNotStore: true
+      replicas: 1
+      image: apache/doris:be-3.0.5
+      requests:
+        cpu: 2
+        memory: 4Gi
+      limits:
+        cpu: 2
+        memory: 4Gi

@@ -44,7 +44,8 @@ deployment.apps/doris-operator serverside-applied
 
 kubectl get po -n doris
 
-kubectl logs doris-operator-8645ff4c85-ntlvb -n doris -f
+kubectl logs doris-operator-76dcf78d4-zfk96 -n doris -f
+kubectl describe po doris-operator-76dcf78d4-zfk96 -n doris
 
 kubectl get serviceaccounts -n doris
 kubectl get secret -n doris
@@ -54,6 +55,7 @@ kubectl get deployment -n doris
 #### Step 3: Deploy the compute-storage decoupled cluster
 
 **Pre-requisities**
+
 - Ensure that S3 is up and running, before this.
 - Edit the `doris-cluster.yaml`, to point to correct foundationdb cluster
 
@@ -84,10 +86,13 @@ kubectl apply -f doris-cluster.yaml -n doris
 
 **Check Health**
 
-Wait for sometime, and check the health of the cluster
+Wait for some time, and check the health of the cluster:
 
 ```shell
 kubectl get ddc -n doris
+
+NAME                          CLUSTERHEALTH   MSPHASE   FEPHASE   CGCOUNT   CGAVAILABLECOUNT   CGFULLAVAILABLECOUNT
+doris-disaggregated-cluster   green           Ready     Ready     1         1                  1
 ```
 
 #### Troubleshooting
@@ -110,8 +115,8 @@ kubectl describe po doris-disaggregated-cluster-fe-0 -n doris
 
 kubectl logs -f doris-disaggregated-cluster-cg1-0 -n doris
 kubectl describe po doris-disaggregated-cluster-cg1-0 -n doris
-
 ```
+
 **Get Health of the StatefulSet**
 
 ```shell
@@ -162,9 +167,7 @@ Login to the UI, and create a bucket called `doris`
 - UI - http://localhost:9001/browse
 - user/pass - minio/minio123
 
-
 Login to the MySQL Shell by logging into the FE node
-
 
 ```shell
 kubectl -n doris exec -it doris-disaggregated-cluster-fe-0 -- /bin/bash

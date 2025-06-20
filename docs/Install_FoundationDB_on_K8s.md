@@ -37,7 +37,7 @@ foundationdbrestores.apps.foundationdb.org   2025-05-31T03:55:24Z
 #### Step 2: Deploy fdb-kubernetes-operator service
 
 ```shell
-cd C:\Users\Nilanjan\doris\k8s\fdb
+cd k8s\fdb
 
 kubectl create -f fdb-operator.yaml -n fdb
 ```
@@ -85,7 +85,7 @@ kubectl logs fdb-kubernetes-operator-controller-manager-54c8d7bd5f-7njxg -f
 
 #### Step 3: Deploy FoundationDB cluster
 
-```shell[fdb](..%2F..%2F..%2FOneDrive%2FDesktop%2Fdoris%2Ffdb)
+```shell
 kubectl create -f fdb-cluster.yaml -n fdb
 ```
 

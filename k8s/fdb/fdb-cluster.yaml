@@ -60,4 +60,4 @@ spec:
     enableLivenessProbe: true
     enableReadinessProbe: false
   useExplicitListenAddress: true
-  version: 7.1.38
+  version: 7.1.67
